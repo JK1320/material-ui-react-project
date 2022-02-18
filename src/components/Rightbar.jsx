@@ -5,7 +5,7 @@ const useStyles = makeStyles((theme) => ({
  
 }));
 
-const App = () => {
+const Rightbar = () => {
   const classes = useStyles();
 
   return (
@@ -15,4 +15,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Rightbar;
