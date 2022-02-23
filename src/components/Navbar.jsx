@@ -1,5 +1,5 @@
 import { alpha, AppBar, Badge, InputBase, makeStyles, Toolbar, Typography } from "@material-ui/core";
-import { Mail, Search } from "@material-ui/icons";
+import { Mail, Notifications, Search } from "@material-ui/icons";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -51,8 +51,8 @@ const Navbar = () => {
             <Badge badgeContent={4} color="secondary">
                 <Mail />
             </Badge>
-             <Badge badgeContent={4} color="secondary">
-                <Mail />
+             <Badge badgeContent={2} color="secondary">
+                <Notifications />
             </Badge>
         </div>
     </Toolbar>
