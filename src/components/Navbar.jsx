@@ -1,8 +1,12 @@
-import { AppBar, InputBase, makeStyles, Toolbar, Typography } from "@material-ui/core";
-import { Search } from "@material-ui/icons";
+import { alpha, AppBar, Badge, InputBase, makeStyles, Toolbar, Typography } from "@material-ui/core";
+import { Mail, Search } from "@material-ui/icons";
 
 
 const useStyles = makeStyles((theme) => ({
+    toolbar: {
+        display: "flex",
+        justifyContent: "space-between",
+    },
  logoLg: {
      display: "none",
      [theme.breakpoints.up("sm")]: {
@@ -15,6 +19,20 @@ const useStyles = makeStyles((theme) => ({
          display: "none",
      }
  },
+ search: {
+     display: "flex",
+     alignItems: "center",
+     backgroundColor: alpha(theme.palette.common.white, 0.15),
+     '&:hover' : {
+         backgroundColor: alpha(theme.palette.common.white, 0.25)
+     },
+     borderRadius: theme.shape.borderRadius,
+     width: "50%",
+ },
+ input: {
+     color: "white",
+     marginLeft: theme.spacing(1)
+ }
 }));
 
 const Navbar = () => {
@@ -22,12 +40,20 @@ const Navbar = () => {
 
   return (
     <AppBar>
-    <Toolbar>
+    <Toolbar className={classes.toolbar}>
         <Typography variant="h6" className={classes.logoLg}>jk1320</Typography>
         <Typography variant="h6" className={classes.logoSm}>JK</Typography>
         <div className={classes.search}>
             <Search />
-            <InputBase placeholder="search..." />
+            <InputBase placeholder="search..." className={classes.input} />
+        </div>
+        <div className={classes.icons}>
+            <Badge badgeContent={4} color="secondary">
+                <Mail />
+            </Badge>
+             <Badge badgeContent={4} color="secondary">
+                <Mail />
+            </Badge>
         </div>
     </Toolbar>
     </AppBar>
