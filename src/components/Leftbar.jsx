@@ -1,5 +1,5 @@
-import { Container, List, makeStyles, Typography } from "@material-ui/core";
-import { Bookmark, ExitToApp, Home, Person, PhotoCamera, PlayCircleOutline, Settings, Storefront, TabletMac } from "@material-ui/icons";
+import { Container, makeStyles, Typography } from "@material-ui/core";
+import { Bookmark, ExitToApp, Home, List, Person, PhotoCamera, PlayCircleOutline, Settings, Storefront, TabletMac } from "@material-ui/icons";
 
 
 const useStyles = makeStyles((theme) => ({
