@@ -5,6 +5,7 @@ const useStyles = makeStyles((theme) => ({
     fab: {
         position: "fixed",
         bottom: 10,
+        right: 10,
     }
 }));
 
