@@ -1,4 +1,4 @@
-import { Container, Fab, FormControlLabel, FormLabel, makeStyles, MenuItem, Modal, Radio, RadioGroup, TextField, Tooltip } from "@material-ui/core";
+import { Button, Container, Fab, FormControlLabel, FormLabel, makeStyles, MenuItem, Modal, Radio, RadioGroup, TextField, Tooltip } from "@material-ui/core";
 import { Add as AddIcon } from "@material-ui/icons";
 import { useState } from "react";
 
@@ -22,6 +22,12 @@ const useStyles = makeStyles((theme) => ({
             width: "100vh",
             height: "100vh",
         }
+    },
+    form: {
+        padding: theme.spacing(2),
+    },
+    item: {
+        marginBottom: theme.spacing(3),
     },
 }));
 
@@ -65,24 +71,56 @@ const Add = () => {
               ></TextField>
             </div>
             <div className={classes.item}>
-              <TextField style={{ width: "50%" }} onChange={handleChange} select label="Visibility" value={visibility}>
+              <TextField
+                style={{ width: "50%" }}
+                onChange={handleChange}
+                select
+                label="Visibility"
+                value={visibility}
+              >
                 <MenuItem value="Public">Public</MenuItem>
                 <MenuItem value="Private">Private</MenuItem>
                 <MenuItem value="Unlisted">Unlisted</MenuItem>
               </TextField>
             </div>
             <div className={classes.item}>
-                <FormLabel component="legend">Who can comment?</FormLabel>
-               <RadioGroup>
-                   <FormControlLabel value="Everybody" control={<Radio />} label="Everybody" />
-                   <FormControlLabel value="My Friends" control={<Radio />} label="My Friends" />
-                   <FormControlLabel value="Nobody" control={<Radio />} label="Nobody" />
-                   <FormControlLabel disabled value="Custom" control={<Radio />} label="Custom (Premium)" />
-               </RadioGroup>
+              <FormLabel component="legend">Who can comment?</FormLabel>
+              <RadioGroup>
+                <FormControlLabel
+                  value="Everybody"
+                  control={<Radio size="small" />}
+                  label="Everybody"
+                />
+                <FormControlLabel
+                  value="My Friends"
+                  control={<Radio size="small" />}
+                  label="My Friends"
+                />
+                <FormControlLabel
+                  value="Nobody"
+                  control={<Radio size="small" />}
+                  label="Nobody"
+                />
+                <FormControlLabel
+                  disabled
+                  value="Custom"
+                  control={<Radio size="small" />}
+                  label="Custom (Premium)"
+                />
+              </RadioGroup>
+            </div>
+            <div className={classes.item}>
+                <Button variant="outlined" color="primary" style={{marginRight: 20}}>Create</Button>
+                <Button variant="outlined" color="secondary" onClick={()=> setOpen(false)}>Cancel</Button>
             </div>
           </form>
         </Container>
       </Modal>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="success">
+
+          </Alert>
+      </Snackbar>
     </>
   );
 };
