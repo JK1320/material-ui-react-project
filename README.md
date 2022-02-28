@@ -1,3 +1,7 @@
+Created this project by coding along Lama Dev's tutorial: "Material UI React Tutorial | Material UI Responsive Project"
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
