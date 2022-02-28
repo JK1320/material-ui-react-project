@@ -1,5 +1,6 @@
-import { Button, Container, Fab, FormControlLabel, FormLabel, makeStyles, MenuItem, Modal, Radio, RadioGroup, TextField, Tooltip } from "@material-ui/core";
+import { Button, Container, Fab, FormControlLabel, FormLabel, makeStyles, MenuItem, Modal, Radio, RadioGroup, Snackbar, TextField, Tooltip } from "@material-ui/core";
 import { Add as AddIcon } from "@material-ui/icons";
+import MuiAlert from "@material-ui/lab/Alert";
 import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
@@ -31,10 +32,22 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+function Alert(props){
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 const Add = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [visibility, setVisibility] = useState("");
+  const [openAlert, setOpenAlert] = useState(false);
+
+  const handleClose = (event, reason) => {
+      if(reason === "clickaway"){
+          return;
+      }
+      setOpenAlert(false);
+  };
 
   const handleChange = (event)=> {
       setVisibility(event.target.value);
@@ -110,16 +123,29 @@ const Add = () => {
               </RadioGroup>
             </div>
             <div className={classes.item}>
-                <Button variant="outlined" color="primary" style={{marginRight: 20}}>Create</Button>
-                <Button variant="outlined" color="secondary" onClick={()=> setOpen(false)}>Cancel</Button>
+              <Button
+                variant="outlined"
+                color="primary"
+                style={{ marginRight: 20 }}
+                onClick={()=> setOpenAlert(true)}
+              >
+                Create
+              </Button>
+              <Button
+                variant="outlined"
+                color="secondary"
+                onClick={() => setOpen(false)}
+              >
+                Cancel
+              </Button>
             </div>
           </form>
         </Container>
       </Modal>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-          <Alert onClose={handleClose} severity="success">
-
-          </Alert>
+      <Snackbar open={openAlert} autoHideDuration={4000} anchorOrigin={{vertical: "bottom", horizontal: "left"}} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          Post is created
+        </Alert>
       </Snackbar>
     </>
   );
